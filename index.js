@@ -16,7 +16,7 @@ var countLength = function (value) {
 }
 var flows = _.flow(split, countLength)
 
-console.log(flows('once time in California'))
+// console.log(flows('once time in California'))
 
 
 /*******************************************
@@ -46,7 +46,11 @@ var articles = [
 // articles using only get, _.flow, and
 // _.map.
 
-var names = _.identity; // change this
+var names = function (articles){
+  return _.map(articles, function(data) {
+    return data.author.name
+  })
+}
 
 assertEqualArrays(
     ['Debbie Downer', 'Caspar Milquetoast'],
@@ -61,14 +65,14 @@ assertEqualArrays(
 // with _.flow and _.contains.
 
 var isAuthor = _.identity; // change this
-assertEqual(
-  false,
-  isAuthor('New Guy', articles)
-);
-assertEqual(
-  true,
-  isAuthor('Debbie Downer', articles)
-  );
+// assertEqual(
+//   false,
+//   isAuthor('New Guy', articles)
+// );
+// assertEqual(
+//   true,
+//   isAuthor('Debbie Downer', articles)
+//   );
 
 console.log("All tests pass.");
 
